@@ -1,5 +1,7 @@
 from scrapy.exceptions import DropItem
 
+# avoid returning duplicate items
+
 class DuplicatesPipeline(object):
 
     def __init__(self):

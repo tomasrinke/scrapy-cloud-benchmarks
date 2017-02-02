@@ -3,6 +3,8 @@ import scrapy
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 
+# simple spider, that starts at home page, and crawls for ../dp/.. pages
+# and extracts a few fields
 
 class AmazonSpider(CrawlSpider):
     name = 'amazon'
@@ -14,8 +16,6 @@ class AmazonSpider(CrawlSpider):
     )
 
     def parse_item(self, response):
-        # from scrapy.shell import inspect_response
-        # inspect_response(response, self)
         try:
             i = {}
             i['name'] = response.xpath('//meta[@name="title"]/@content').extract_first()
